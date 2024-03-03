@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   get 'users/profile'
   devise_for :user, controllers: {
-  sessions: 'user/sessions',
-  registrations: 'user/registrations'
+    sessions: 'user/sessions',
+    registrations: 'user/registrations'
   }
-  ge '/u/:id', to: 'users#profile', as 'user'
+  get '/u/:id', to: 'users#profile', as: 'user'
 
   resources :posts
     get 'about', to: 'pages#about'
