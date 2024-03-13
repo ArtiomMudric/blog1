@@ -19,6 +19,12 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
+    if current_user == @post.user
+      # If the current user is the author of the post, proceed with editing
+      render :edit
+    else
+            redirect_to root_path
+    end
   end
 
   # POST /posts or /posts.json
