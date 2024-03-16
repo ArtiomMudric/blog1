@@ -19,11 +19,16 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
+    #First time I tried:
+    # if curent_user == @post.user
+    # @post.edit
+    
     if current_user == @post.user
       # If the current user is the author of the post, proceed with editing
       render :edit
     else
-            redirect_to root_path
+      # NOTE! PS. probably becasue of missing java script Mandatory ask Christoph to help you with this, why this isn't working? flash[:error] = "You are not authorized to edit this post." or  redirect_to root_path, alert: "You don't have permission to edit this post."
+      redirect_to root_path
     end
   end
 
